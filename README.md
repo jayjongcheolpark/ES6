@@ -118,6 +118,44 @@ fields.every(function(field) {
 
 ## `reduce` Helper
 
+```js
+var numbers = [10,20,30]
+var sum = 0
+
+numbers.reduce((sum, number) => {
+  return sum + number
+}, 0)
+// 60
+```
+
+```js
+var primaryColors = [
+  { color: 'red'},
+  { color: 'yellow'},
+  { color: 'blue'}
+]
+
+primaryColors.reduce((previous, primaryColor) => {
+	previous.push(primaryColor.color)
+  return previous
+}, [])
+// ["red","yellow","blue"]
+```
+
+```js
+function blancedParens(string) {
+	return !string.split("").reduce((previous, char) => {
+  	if (previous < 0) { return previous }
+    if (char === "(") { return ++previous }
+  	if (char === ")") { return --previous }
+  	return previous
+  }, 0)
+}
+
+blancedParens("((((") // false
+blancedParens("(())") // true
+```
+
 ## `const` and `let`
 
 ## Template Strings
