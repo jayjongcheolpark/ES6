@@ -213,7 +213,65 @@ function getMessage() {
 }
 ```
 
+```js
+const device_id = 4
+const guid = 20
+const username = "hello"
+// before
+const data = '{"device_id": "' + device_id + '", "guid": "' + guid + '", "username": "' + username + '"}'
+// ES6
+const new_data = `{"device_id": "${device_id}", "guid": "${guid}", "username": "${username}"}`
+```
+
 ## Arrow Functions
+
+```js
+const numbers = [1,2,3]
+
+numbers.map(number => 2 * number)
+```
+
+```js
+// with bind
+const team = {
+  members: ['Jane', 'Bill'],
+  teamName: 'Super Squad',
+  teamSummary: function() {
+    return this.members.map(function(member) {
+    	return `${member} is on team ${this.teamName}`
+  	}.bind(this))
+  }
+}
+// "Jane is on team Super Squad","Bill is on team Super Squad"]
+```
+
+```js
+// without bind
+const team = {
+  members: ['Jane', 'Bill'],
+  teamName: 'Super Squad',
+  teamSummary: function() {
+    return this.members.map(member => `${member} is on team ${this.teamName}`)
+  }
+}
+// "Jane is on team Super Squad","Bill is on team Super Squad"]
+```
+
+```js
+// Arrow Functions Aren't Always a Solution
+const profile = {
+    name: 'Alex',
+    getName: function() { return this.name }
+}
+
+/*
+arrow functions do not bind their own 'this', 'this' will still be pointing at the default object, which is the window. So window.name will return 'undefined'.
+*/
+const profile = {
+    name: 'Alex',
+    getName: () => this.name // undefined
+}
+```
 
 ## Enhanced Object Literals
 
