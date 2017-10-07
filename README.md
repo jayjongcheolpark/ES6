@@ -206,6 +206,13 @@ console.log( a );		// 2
 
 ## Template Strings
 
+```js
+function getMessage() {
+  const year = new Date().getFullYear()
+  return `The year is ${year}`
+}
+```
+
 ## Arrow Functions
 
 ## Enhanced Object Literals
