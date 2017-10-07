@@ -37,16 +37,43 @@ function pluck(array, property) {
 ## `filter` Helper
 
 ```js
-var products = [
-  { name: 'cucumber', type: 'vegetable' },
-  { name: 'banana', type: 'fruit' },
-  { name: 'celery', type: 'vegetable' },
-  { name: 'orange', type: 'fruit' }
+var post = { id: 4, title: 'New Post' }
+
+var comments = [
+  { postId: 4, content: 'awesome post' },
+  { postId: 3, content: 'it was ok' },
+  { postId: 4, content: 'neat' }
 ]
 
-const isFruit = ({ type }) => { return type === 'fruit' }
+function commentsForPost (post, comments) {
+	return comments.filter(comment => {
+  	return comment.postId === post.id
+  })
+}
+```
 
-products.filter(isFruit)
+```js
+[{"postId":4,"content":"awesome post"},{"postId":4,"content":"neat"}]
+```
+
+## `find` Helper
+
+```js
+var users = [
+  { name: 'Jill' },
+  { name: 'Alex', id: 1 },
+  { name: 'Alex' }
+]
+
+users.find(user => {
+  return user.name === 'Alex'
+})
+// {"name":"Alex","id":1}
+
+users.filter(user => {
+  return user.name === 'Alex'
+})
+// [{"name":"Alex","id":1},{"name":"Alex"}]
 ```
 
 ## `every` and `some` Helper
