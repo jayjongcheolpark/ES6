@@ -78,6 +78,44 @@ users.filter(user => {
 
 ## `every` and `some` Helper
 
+```js
+var computers = [
+  { name: 'Apple', ram: 24},
+  { name: 'Compaq', ram: 4},
+  { name: 'Acer', ram: 32}
+]
+
+computers.every(computer => {
+  return computer.ram > 16
+})
+// false
+
+computers.some(computer => {
+  return computer.ram > 16
+})
+// true
+```
+
+```js
+function Field(value) {
+  this.value = value
+}
+
+Field.prototype.validate = function() {
+  return this.value.length > 0
+}
+
+var username = new Field("Jay")
+var password = new Field("1234")
+var birthdate = new Field("10/10/2010")
+
+var fields = [username, password, birthdate]
+fields.every(function(field) {
+  return field.validate()
+})
+// true
+```
+
 ## `reduce` Helper
 
 ## `const` and `let`
