@@ -156,7 +156,53 @@ blancedParens("((((") // false
 blancedParens("(())") // true
 ```
 
+```js
+function unique(array) {
+  return array.reduce(
+    (uniques, elem) =>
+    uniques.find(el => el === elem)
+    ? uniques : [...uniques, elem], []
+  )
+}
+
+var numbers = [1, 1, 2, 3, 4, 4]
+
+unique(numbers) // [1,2,3,4]
+```
+
 ## `const` and `let`
+
+```js
+{
+	const a = 2;
+	console.log( a );	// 2
+
+	a = 3;				// TypeError!
+}
+```
+
+```js
+{
+	const a = [1,2,3];
+	a.push( 4 );
+	console.log( a );		// [1,2,3,4]
+
+	a = 42;					// TypeError!
+}
+// If the value is complex, such as an object or array,
+// the contents of the value can still be modified
+```
+
+```js
+var a = 2;
+
+{
+	let a = 3;
+	console.log( a );	// 3
+}
+
+console.log( a );		// 2
+```
 
 ## Template Strings
 
