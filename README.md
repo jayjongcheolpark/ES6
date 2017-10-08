@@ -408,6 +408,90 @@ validateShoppingList('oranges', 'bread', 'eggs')
 
 ## Destructuring
 
+```js
+var expense = {
+  type: 'Business',
+  amount: '$45 USD'
+}
+// before
+var type = expense.type
+var amount = expense.amount
+// ES6
+const { type, amount } = expense
+```
+
+```js
+var savedFile = {
+  extension: 'jpg',
+  name: 'repost',
+  size: 14040
+}
+
+function fileSummary({ name, extension, size }, { color }) {
+  return `The size of file ${name}.${extension} is ${size}, and color is ${color}`
+}
+
+fileSummary(savedFile, { color: 'red'})
+// The size of file repost.jpg is 14040, and color is red
+```
+
+```js
+const companies = [
+  'Google',
+  'Facebook',
+  'Uber'
+]
+
+const [ name, name2, name3, name4 ] = companies
+name; // Google
+name2; // Facebook
+name3; // Uber
+typeof name4 // underfined
+
+const [ name, name2, ...rest] = companies
+name; // Google
+name2; // Facebook
+rest; // ["Uber"]
+```
+
+```js
+const companies = [
+  { name: 'Google', location: 'Mountain View' },
+  { name: 'Facebook', location: 'menlo park' },
+  { name: 'User', location: 'San Francisco' }
+]
+
+const [{ location }] = companies;
+// Mountain View
+```
+
+```js
+const Google = {
+  locations: ['Mountain View', 'New York', 'London']
+}
+
+const { locations: [ location ] } = Google
+// Mountain View
+```
+
+```js
+const points = [
+  [4, 5],
+  [10, 1],
+  [0, 40]
+]
+
+points.map(([x, y]) => ({x, y}))
+// [{"x":4,"y":5},{"x":10,"y":1},{"x":0,"y":40}]
+```
+
+```js
+const numbers = [1, 2, 3];
+
+const double = ([ num, ...rest ]) => rest.length ? [num*2, ...double(rest)] : [num*2];
+// [2, 4, 6]
+```
+
 ## Classes
 
 ## Generators
