@@ -494,6 +494,34 @@ const double = ([ num, ...rest ]) => rest.length ? [num*2, ...double(rest)] : [n
 
 ## Classes
 
+```js
+class Car {
+  constructor({ title }) {
+  	this.title = title
+  }
+
+  drive() {
+  	return 'vroom'
+  }
+}
+
+class Toyota extends Car {
+  constructor(options) {
+    super(options)
+    this.color = options.color
+  }
+
+	honk() {
+    return 'beep'
+  }
+}
+
+const toyota = new Toyota({ color: 'red', title: 'Daily Driver' })
+toyota.honk() // beep
+toyota.drive() // vroom
+toyota // {"title":"Daily Driver","color":"red"}
+```
+
 ## Generators
 
 ## Promises and Fetch
