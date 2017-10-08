@@ -275,6 +275,61 @@ const profile = {
 
 ## Enhanced Object Literals
 
+```js
+// before
+function createBookShop(inventory) {
+  return {
+    inventory: inventory,
+    inventoryValue: function() {
+      return this.inventory.reduce((total, book) => total + book.price, 0)
+    },
+    priceForTitle: function(title) {
+      return this.inventory.find(book => book.title === title).price
+    }
+  }
+}
+
+const inventory = [
+  { title: 'Harry Potter', price: 10 },
+  { title: 'Eloquent Javascript', price: 15 }
+]
+
+const bookShop = createBookShop(inventory)
+bookShop.inventoryValue()
+bookShop.priceForTitle('Harry Potter')
+```
+
+```js
+// ES6
+function createBookShop(inventory) {
+  return {
+    inventory,
+    inventoryValue() {
+      return this.inventory.reduce((total, book) => total + book.price, 0)
+    },
+    priceForTitle(title) {
+      return this.inventory.find(book => book.title === title).price
+    }
+  }
+}
+```
+
+```js
+// before
+function saveFile(url, data) {
+  $.ajax({ method: 'POST', url: url, data: data })
+}
+
+// ES6
+function saveFile(url, data) {
+  $.ajax({
+    url,
+    data,
+    method: 'POST'
+  })
+}
+```
+
 ## Default Function Arguments
 
 ## Rest and Spread Operator
