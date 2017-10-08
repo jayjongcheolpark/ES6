@@ -374,6 +374,38 @@ createAdminUser(user)
 
 ## Rest and Spread Operator
 
+```js
+// rest
+function addNumbers(...numbers) {
+  return numbers.reduce(function(sum, number) {
+    return sum + number
+  }, 0)
+}
+
+addNumbers(1,2,3,4,5) // 15
+```
+
+```js
+// spread
+const defaultColors = ['red', 'green']
+const userFavoriteColors = ['orange', 'yellow']
+
+[ 'blue', ...defaultColors, ...userFavoriteColors ]
+//["blue","red","green","orange","yellow"]
+```
+
+```js
+function validateShoppingList(...items) {
+  if (items.indexOf('milk') < 0) {
+    return [ 'milk', ...items ]
+  }
+  return items
+}
+
+validateShoppingList('oranges', 'bread', 'eggs')
+// ["milk","oranges","bread","eggs"]
+```
+
 ## Destructuring
 
 ## Classes
