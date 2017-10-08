@@ -524,4 +524,14 @@ toyota // {"title":"Daily Driver","color":"red"}
 
 ## Generators
 
+```js
+function* numbers() {
+	yield
+}
+
+const gen = numbers();
+gen.next() // {"done":false}
+gen.next() // {"done":true}
+```
+
 ## Promises and Fetch
