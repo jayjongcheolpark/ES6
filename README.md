@@ -332,6 +332,46 @@ function saveFile(url, data) {
 
 ## Default Function Arguments
 
+```js
+function makeAjaxRequest(url, method = 'GET') {
+	return method
+}
+makeAjaxRequest("url") // GET
+makeAjaxRequest("url", undefined); // GET
+makeAjaxRequest("url", 'POST') // POST
+```
+
+```js
+// before
+function User(id) {
+  this.id = id
+}
+
+function generateId() {
+  return Math.random() * 99999999
+}
+
+function createAdminUser(user) {
+  user.admin = true
+  return user
+}
+
+createAdminUser(new User(generateId()))
+// {"id":97719752.59620695,"admin":true}
+```
+
+```js
+// ES6
+function createAdminUser(user = new User(generateId())) {
+  user.admin = true
+  return user
+}
+
+const user = new User(generateId())
+createAdminUser()
+createAdminUser(user)
+```
+
 ## Rest and Spread Operator
 
 ## Destructuring
