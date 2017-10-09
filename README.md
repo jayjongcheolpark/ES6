@@ -525,13 +525,49 @@ toyota // {"title":"Daily Driver","color":"red"}
 ## Generators
 
 ```js
-function* numbers() {
-	yield
+const testingTeam = {
+  lead: 'Amanda',
+  tester: 'Bill'
 }
 
-const gen = numbers();
-gen.next() // {"done":false}
-gen.next() // {"done":true}
+const engineeringTeam = {
+  testingTeam,
+	size: 3,
+  department: 'Engineering',
+  lead: 'Jill',
+  manager: 'Alex',
+  engineer: 'Dave'
+}
+
+function* TeamIterator(team) {
+  yield team.lead
+  yield team.manager
+  yield team.engineer
+  yield* TestingTeamIterator(team.testingTeam)
+}
+
+function* TestingTeamIterator(team) {
+  yield team.lead
+  yield team.tester
+}
+
+const names = []
+for (let name of TeamIterator(engineeringTeam)) {
+  names.push(name)
+}
+names
+// ["Jill", "Alex", "Dave", "Amanda", "Bill"]
+```
+
+```js
+function* iterator() {
+  let user = yield "James";
+  console.log(`user: ${user}`);
+}
+
+const gen = iterator();
+gen.next()
+gen.next("Jay") // user: Jay
 ```
 
 ## Promises and Fetch
