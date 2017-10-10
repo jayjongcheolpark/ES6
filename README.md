@@ -664,3 +664,16 @@ for (let value of tree) {
 // ["Great post!","good comment","bad comment","meh"]
 ```
 ## Promises and Fetch
+
+```js
+url = "https://jsonplaceholder.typicode.com/posts/"
+
+fetch(url)
+  .then(data => console.log(data))
+  .catch(error => console.log('BAD', error))
+/*
+url = "https://jsonplaceholder.typicode.com/posts123/" cannot found an error in catch statement
+
+url = "https://jsonplaceholder.typicode123.com/posts123/" can found ar error
+*/
+```
